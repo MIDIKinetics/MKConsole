@@ -35,10 +35,10 @@ MKConsole.print('The button has been tapped ' + tapCount + ' times');
 <VARIABLE name="light=0" send="0" osc_target="0" osc_trigger="1" osc_message="/Instructions/Text9/light" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 </WINDOW>
 </WINDOW>
-<WINDOW class="Container" text="MKConsole" x="125" y="338" width="727" height="325" id="32" state="1" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1052688" label="1" tabbar="1" meta="0">
-<WINDOW class="Container" text="_" x="-8" y="-8" width="727" height="325" id="22" state="1" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="8388608" label="1" tabbar="1" meta="0">
-<WINDOW class="Container" text="UI" x="-8" y="-8" width="727" height="325" id="1" state="1" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="8421376" label="1" tabbar="1" meta="0">
-<WINDOW class="Canvas" text="Screen" x="0" y="0" width="687" height="285" id="4" state="5" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" redrawMode="1" touchSupport="1">
+<WINDOW class="Container" text="MKConsole" x="131" y="340" width="698" height="294" id="32" state="1" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1052688" label="1" tabbar="1" meta="0">
+<WINDOW class="Container" text="_" x="-8" y="-8" width="698" height="294" id="22" state="1" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="8388608" label="1" tabbar="1" meta="0">
+<WINDOW class="Container" text="UI" x="-8" y="-8" width="698" height="294" id="1" state="1" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="8421376" label="1" tabbar="1" meta="0">
+<WINDOW class="Canvas" text="Screen" x="0" y="0" width="658" height="254" id="4" state="5" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" redrawMode="1" touchSupport="1">
 <VARIABLE name="touchReferencePoint={0, 0}" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/_/UI/Screen/touchReferencePoint" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="9727,255,-1" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="isScrollingHorizontally=0" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/_/UI/Screen/isScrollingHorizontally" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="25955,10611,8226" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="horizontalScrollReferencePoint=" value="0" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/_/UI/Screen/horizontalScrollReferencePoint" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,-28116,0" kbmouse_scale="0,1,0,1"/>
@@ -136,7 +136,7 @@ if (isScrollingHorizontally) {
 <SCRIPT name="onCursorUp(cursor,hit,x,y)" script="touchReferencePoint = {x, y};
 isScrollingHorizontally = 0;" trigger_script="" trigger_type="255" trigger_name="onCursorUp" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/UI/Screen/onCursorUp" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
-<WINDOW class="Canvas" text="VerticalScrollBar" x="689" y="0" width="22" height="285" id="12" state="5" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" redrawMode="1" touchSupport="1">
+<WINDOW class="Canvas" text="VerticalScrollBar" x="660" y="0" width="22" height="254" id="12" state="5" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" redrawMode="1" touchSupport="1">
 <SCRIPT name="onRedraw()" script="decl this = getobject();
 
 canvas_clear(this);
@@ -187,7 +187,7 @@ if (numberOfLinesPrinted() == 0) {
 }
 return max(visiblePercentOfTotal * bounds()[3], 32);" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/UI/VerticalScrollBar/scrollIndicatorHeight" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
 </WINDOW>
-<WINDOW class="Canvas" text="HorizontalScrollBar" x="0" y="287" width="687" height="22" id="13" state="5" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" redrawMode="1" touchSupport="1">
+<WINDOW class="Canvas" text="HorizontalScrollBar" x="0" y="256" width="658" height="22" id="13" state="5" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" redrawMode="1" touchSupport="1">
 <SCRIPT name="onRedraw()" script="decl this = getobject();
 
 canvas_clear(this);
@@ -227,7 +227,7 @@ scrollHorizontally((xOffset/adjustedWidth) *  maxLineWidth());
 }
 return  (bounds()[2] / maxLineWidth()) * bounds()[2];" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/UI/HorizontalScrollBar/scrollIndicatorWidth" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
 </WINDOW>
-<WINDOW class="Canvas" text="ScrollBarCorner" x="689" y="287" width="22" height="22" id="15" state="5" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" redrawMode="1" touchSupport="1">
+<WINDOW class="Canvas" text="ScrollBarCorner" x="660" y="256" width="22" height="22" id="15" state="5" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" redrawMode="1" touchSupport="1">
 <SCRIPT name="onRedraw()" script="decl this = getobject();
 decl bounds = replace(getobjectrect(this), {0, 0}, 0);
 canvas_setFillStyle(this, scrollBarBackgroundColor());
@@ -236,10 +236,10 @@ canvas_fillRect(this, 0, 0, bounds[2], bounds[3]);
 </WINDOW>
 <WINDOW class="Container" text="LayoutCalculator" x="1024" y="1024" width="32" height="32" id="16" state="0" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" label="1" tabbar="1" meta="0">
 <WINDOW class="Container" text="_private" x="0" y="0" width="111" height="65" id="12" state="0" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" label="1" tabbar="1" meta="0">
-<VARIABLE name="_lastBounds=" value="0,0,687,285" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/_/UI/LayoutCalculator/_private/_lastBounds" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
-<VARIABLE name="_rowHeight=" value="24.090910" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/_/UI/LayoutCalculator/_private/_rowHeight" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
-<VARIABLE name="_numRows=" value="11" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/_/UI/LayoutCalculator/_private/_numRows" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
-<VARIABLE name="_adjustedPadding=" value="3.045455" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/_/UI/LayoutCalculator/_private/_adjustedPadding" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="_lastBounds=" value="0,0,658,254" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/_/UI/LayoutCalculator/_private/_lastBounds" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="_rowHeight=" value="26.444445" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/_/UI/LayoutCalculator/_private/_rowHeight" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="_numRows=" value="9" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/_/UI/LayoutCalculator/_private/_numRows" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="_adjustedPadding=" value="4.222222" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/_/UI/LayoutCalculator/_private/_adjustedPadding" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <SCRIPT name="recalculateLayoutIfNeeded()" script="decl bounds = replace(getobjectrect(Screen), {0, 0}, 0);
 
 if (_lastBounds[0] == bounds[0] &&  
@@ -462,7 +462,11 @@ return result;" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_d
 decl size = sizeof(array);
 decl i;
 for (i = 0; i < size; i++) {
-	result += '' + array[i];
+	if (isObject(array[i])) {
+		result += getattribute(array[i], 'name');
+	} else {
+		result += '' + array[i];
+	}
 	if (i < size - 1) {
 		result += ', ';
 	}
@@ -471,21 +475,13 @@ result += '}';
 return result;" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/Helpers/arrayToText" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
 <SCRIPT name="valueToText(value)" script="if (sizeof(value) > 1) {
 	return arrayToText(value);
-} else if (sizeof(getobjectrect(value)) > 1) {
+} else if (isObject(value)) {
 	return objectToText(value);
-} else {
-	return '' + value;
-}
-
-decl isObject = sizeof(getobjectrect(value)) > 1;
-if (isObject) {
-	return objectToText(value);
-} else if (sizeof(value) > 1) {
-	
 } else {
 	return '' + value;
 }
 " trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/Helpers/valueToText" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
+<SCRIPT name="isObject(value)" script="return sizeof(getobjectrect(value)) > 1;" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/Helpers/isObject" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
 </WINDOW>
 <SCRIPT name="onLoad()" script="decl this = getobject();
 
