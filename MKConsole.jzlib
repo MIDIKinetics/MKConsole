@@ -426,7 +426,11 @@ return result;" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_d
 decl size = sizeof(array);
 decl i;
 for (i = 0; i < size; i++) {
-	result += '' + array[i];
+	if (isObject(array[i])) {
+		result += getattribute(array[i], 'name');
+	} else {
+		result += '' + array[i];
+	}
 	if (i < size - 1) {
 		result += ', ';
 	}
@@ -435,21 +439,13 @@ result += '}';
 return result;" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/Helpers/arrayToText" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
 <SCRIPT name="valueToText(value)" script="if (sizeof(value) > 1) {
 	return arrayToText(value);
-} else if (sizeof(getobjectrect(value)) > 1) {
+} else if (isObject(value)) {
 	return objectToText(value);
-} else {
-	return '' + value;
-}
-
-decl isObject = sizeof(getobjectrect(value)) > 1;
-if (isObject) {
-	return objectToText(value);
-} else if (sizeof(value) > 1) {
-	
 } else {
 	return '' + value;
 }
 " trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/Helpers/valueToText" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
+<SCRIPT name="isObject(value)" script="return sizeof(getobjectrect(value)) > 1;" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/Helpers/isObject" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
 </WINDOW>
 <SCRIPT name="onLoad()" script="decl this = getobject();
 
