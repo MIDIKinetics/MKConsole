@@ -1,8 +1,8 @@
 <JZML>
-<WINDOW class="Container" text="MKConsole" x="0" y="0" width="698" height="294" id="32" state="1" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1052688" label="1" tabbar="1" meta="0">
-<WINDOW class="Container" text="_" x="-8" y="-8" width="698" height="294" id="22" state="1" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="8388608" label="1" tabbar="1" meta="0">
-<WINDOW class="Container" text="UI" x="-8" y="-8" width="698" height="294" id="1" state="1" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="8421376" label="1" tabbar="1" meta="0">
-<WINDOW class="Canvas" text="Screen" x="0" y="0" width="658" height="254" id="4" state="5" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" redrawMode="1" touchSupport="1">
+<WINDOW class="Container" text="MKConsole" x="0" y="0" width="680" height="268" id="32" state="1" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1052688" label="1" tabbar="1" meta="0">
+<WINDOW class="Container" text="_" x="-8" y="-8" width="680" height="268" id="22" state="1" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="8388608" label="1" tabbar="1" meta="0">
+<WINDOW class="Container" text="UI" x="-8" y="-8" width="680" height="268" id="1" state="1" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="8421376" label="1" tabbar="1" meta="0">
+<WINDOW class="Canvas" text="Screen" x="0" y="0" width="640" height="228" id="4" state="5" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" redrawMode="1" touchSupport="1">
 <VARIABLE name="touchReferencePoint={0, 0}" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/_/UI/Screen/touchReferencePoint" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="9727,255,-1" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="isScrollingHorizontally=0" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/_/UI/Screen/isScrollingHorizontally" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="25955,10611,8226" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="horizontalScrollReferencePoint=" value="0" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/_/UI/Screen/horizontalScrollReferencePoint" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,-28116,0" kbmouse_scale="0,1,0,1"/>
@@ -16,12 +16,6 @@ decl bounds = bounds();
 decl numRows = LayoutCalculator.numRows();
 decl rowHeight = LayoutCalculator.rowHeight();
 decl padding = LayoutCalculator.adjustedPadding();
-decl rowSpacing = rowSpacing();
-decl maxLineWidth = maxLineWidth();
-decl fontSize = fontSize();
-decl textColor = textColor();
-decl backgroundColor = backgroundColor();
-
 
 canvas_setFontSize(this, fontSize);
 canvas_setTextBaseline(this, textBaselineMiddle);
@@ -34,7 +28,7 @@ for (i = 0; i < numRows; i++) {
 	canvas_setFillStyle(this, textColor);
 	decl lineIndex = scrolledLine + i;
 	if (lineIndex <= numberOfLinesPrinted()) {
-		canvas_fillText(this, textForLine(lineIndex), max(padding, 8) + horizontalScroll, ty + (rowHeight/2), maxLineWidth());
+		canvas_fillText(this, textForLine(lineIndex), max(padding, 8) + horizontalScroll, ty + (rowHeight/2), maxLineWidth);
 	}
 	ty += rowHeight + rowSpacing;
 }
@@ -100,7 +94,7 @@ if (isScrollingHorizontally) {
 <SCRIPT name="onCursorUp(cursor,hit,x,y)" script="touchReferencePoint = {x, y};
 isScrollingHorizontally = 0;" trigger_script="" trigger_type="255" trigger_name="onCursorUp" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/UI/Screen/onCursorUp" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
-<WINDOW class="Canvas" text="VerticalScrollBar" x="660" y="0" width="22" height="254" id="12" state="5" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" redrawMode="1" touchSupport="1">
+<WINDOW class="Canvas" text="VerticalScrollBar" x="642" y="0" width="22" height="228" id="12" state="5" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" redrawMode="1" touchSupport="1">
 <SCRIPT name="onRedraw()" script="decl this = getobject();
 
 canvas_clear(this);
@@ -110,7 +104,7 @@ decl scrollIndicatorHeight = scrollIndicatorHeight();
 decl horizontalPadding = 2;
 
 // Draw Background
-canvas_setFillStyle(this, scrollBarBackgroundColor());
+canvas_setFillStyle(this, scrollBarBackgroundColor);
 canvas_fillRect(this, 0, 0, bounds[2], bounds[3]);
 
 if (numberOfLinesPrinted() == 0) {
@@ -118,7 +112,7 @@ if (numberOfLinesPrinted() == 0) {
 }
 
 // Draw Scroll Indicator
-canvas_setFillStyle(this, scrollIndicatorColor());
+canvas_setFillStyle(this, scrollIndicatorColor);
 canvas_fillRect(this, 
     horizontalPadding,
     (bounds[3] - scrollIndicatorHeight) * (scrolledLine / maxScrollableLine()), 
@@ -151,7 +145,7 @@ if (numberOfLinesPrinted() == 0) {
 }
 return max(visiblePercentOfTotal * bounds()[3], 32);" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/UI/VerticalScrollBar/scrollIndicatorHeight" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
 </WINDOW>
-<WINDOW class="Canvas" text="HorizontalScrollBar" x="0" y="256" width="658" height="22" id="13" state="5" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" redrawMode="1" touchSupport="1">
+<WINDOW class="Canvas" text="HorizontalScrollBar" x="0" y="230" width="640" height="22" id="13" state="5" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" redrawMode="1" touchSupport="1">
 <SCRIPT name="onRedraw()" script="decl this = getobject();
 
 canvas_clear(this);
@@ -159,7 +153,7 @@ canvas_clear(this);
 decl bounds = bounds();
 
 // Draw Background
-canvas_setFillStyle(this, scrollBarBackgroundColor());
+canvas_setFillStyle(this, scrollBarBackgroundColor);
 canvas_fillRect(this, 0, 0, bounds[2], bounds[3]);
 
 if (numberOfLinesPrinted() == 0) {
@@ -167,10 +161,10 @@ if (numberOfLinesPrinted() == 0) {
 }
 
 // Draw Scroll Indicator
-canvas_setFillStyle(this, scrollIndicatorColor());
+canvas_setFillStyle(this, scrollIndicatorColor);
 decl scrollIndicatorWidth = scrollIndicatorWidth();
 canvas_fillRect(this, 
-	-1 * (horizontalScroll/maxLineWidth()) * (bounds[2] - scrollIndicatorWidth), 
+	-1 * (horizontalScroll/maxLineWidth) * (bounds[2] - scrollIndicatorWidth), 
 	2,
 	scrollIndicatorWidth, 
 	bounds[3] - 4
@@ -183,27 +177,27 @@ canvas_addHitRegion(this, 0, 1);" trigger_script="" trigger_type="255" trigger_n
 decl scrollIndicatorWidth = scrollIndicatorWidth();
 decl xOffset = x - (scrollIndicatorWidth / 2);
 decl adjustedWidth = bounds[2] - scrollIndicatorWidth();
-scrollHorizontally((xOffset/adjustedWidth) *  maxLineWidth());
+scrollHorizontally((xOffset/adjustedWidth) *  maxLineWidth);
 
 " trigger_script="" trigger_type="255" trigger_name="onCursorMove" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/UI/HorizontalScrollBar/onCursorMove" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
-<SCRIPT name="scrollIndicatorWidth()" script="if (maxLineWidth() == 0) {
+<SCRIPT name="scrollIndicatorWidth()" script="if (maxLineWidth <= 0) {
 	return 0;
 }
-return  (bounds()[2] / maxLineWidth()) * bounds()[2];" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/UI/HorizontalScrollBar/scrollIndicatorWidth" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
+return  (bounds()[2] / maxLineWidth) * bounds()[2];" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/UI/HorizontalScrollBar/scrollIndicatorWidth" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
 </WINDOW>
-<WINDOW class="Canvas" text="ScrollBarCorner" x="660" y="256" width="22" height="22" id="15" state="5" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" redrawMode="1" touchSupport="1">
+<WINDOW class="Canvas" text="ScrollBarCorner" x="642" y="230" width="22" height="22" id="15" state="5" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" capture="1" redrawMode="1" touchSupport="1">
 <SCRIPT name="onRedraw()" script="decl this = getobject();
 decl bounds = replace(getobjectrect(this), {0, 0}, 0);
-canvas_setFillStyle(this, scrollBarBackgroundColor());
+canvas_setFillStyle(this, scrollBarBackgroundColor);
 canvas_fillRect(this, 0, 0, bounds[2], bounds[3]);
 " trigger_script="" trigger_type="255" trigger_name="onRedraw" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/UI/ScrollBarCorner/onRedraw" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
 </WINDOW>
 <WINDOW class="Container" text="LayoutCalculator" x="1024" y="1024" width="32" height="32" id="16" state="0" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" label="1" tabbar="1" meta="0">
 <WINDOW class="Container" text="_private" x="0" y="0" width="111" height="65" id="12" state="0" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" label="1" tabbar="1" meta="0">
-<VARIABLE name="_lastBounds=" value="0,0,658,254" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/_/UI/LayoutCalculator/_private/_lastBounds" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
-<VARIABLE name="_rowHeight=" value="26.444445" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/_/UI/LayoutCalculator/_private/_rowHeight" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="_lastBounds=" value="-1,-1,-1,-1" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/_/UI/LayoutCalculator/_private/_lastBounds" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="_rowHeight=" value="26.444447" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/_/UI/LayoutCalculator/_private/_rowHeight" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <VARIABLE name="_numRows=" value="9" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/_/UI/LayoutCalculator/_private/_numRows" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
-<VARIABLE name="_adjustedPadding=" value="4.222222" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/_/UI/LayoutCalculator/_private/_adjustedPadding" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="_adjustedPadding=" value="4.222221" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/_/UI/LayoutCalculator/_private/_adjustedPadding" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
 <SCRIPT name="recalculateLayoutIfNeeded()" script="decl bounds = replace(getobjectrect(Screen), {0, 0}, 0);
 
 if (_lastBounds[0] == bounds[0] &&  
@@ -291,50 +285,13 @@ if (scrolledLine >= max(numberOfLinesPrinted - numRows - 1, 0)) {
 }
 
 refresh();" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/UI/scrollToLine" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
-<SCRIPT name="scrollHorizontally(x)" script="horizontalScroll = -1 * min(max(x, 0), maxLineWidth());
+<SCRIPT name="scrollHorizontally(x)" script="horizontalScroll = -1 * min(max(x, 0), maxLineWidth);
 refresh();" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/UI/scrollHorizontally" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
 <SCRIPT name="refresh()" script="canvas_refresh(Screen);
 canvas_refresh(VerticalScrollBar);
 canvas_refresh(HorizontalScrollBar);
 canvas_refresh(ScrollBarCorner);
 " trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/UI/refresh" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
-<SCRIPT name="init()" script="decl this = getobject();
-decl bounds = replace(getobjectrect(getparent(_)), {0, 0}, 0) - {0, 0, 16, 16};
-decl spacing = 2;
-
-decl scrollBarSize = scrollBarSize();
-
-setobjectrect(UI.Screen, {
-	bounds[0], 
-	bounds[1], 
-	bounds[2] - scrollBarSize - spacing,
-	bounds[3] - scrollBarSize - spacing
-});
-
-setobjectrect(UI.VerticalScrollBar, {
-	bounds[2] - scrollBarSize, 
-	bounds[1],
-	scrollBarSize,
-	bounds[3] - scrollBarSize - spacing
-});
-
-setobjectrect(UI.HorizontalScrollBar, {
-	bounds[0],
-	bounds[3] - scrollBarSize,
-	bounds[2] - scrollBarSize - spacing,
-	scrollBarSize
-});
-
-
-setobjectrect(UI.ScrollBarCorner, {
-	bounds[2] - scrollBarSize,
-	bounds[3] - scrollBarSize,
-	scrollBarSize,
-	scrollBarSize
-});
-
-
-refresh();" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/UI/init" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
 <SCRIPT name="textForLine(line)" script="return Buffer.readLine(line);" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/UI/textForLine" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
 <SCRIPT name="bufferDidClear()" script="scrollToLine(0);" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/UI/bufferDidClear" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
 <SCRIPT name="bufferDidWriteLine(line)" script="
@@ -447,7 +404,38 @@ return result;" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_d
 " trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/Helpers/valueToText" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
 <SCRIPT name="isObject(value)" script="return sizeof(getobjectrect(value)) > 1;" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/Helpers/isObject" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
 </WINDOW>
-<SCRIPT name="onLoad()" script="decl this = getobject();
+<WINDOW class="Container" text="_Software_License_Agreement" x="0" y="0" width="32" height="32" id="396" state="0" group="0" font="tahoma,10,0" send="0" osc_target="-2" midi_target="-2" kbmouse_target="-2" color="1596013" label="1" tabbar="1" meta="0">
+<SCRIPT name="Software_License_Agreement()" script="/*
+Copyright (c) 2024 MIDI Kinetics
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software 
+and associated documentation files (the \"Software\"), to deal in the Software without restriction, 
+including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, 
+subject to the following condition:
+
+The above copyright notice and this permission notice shall be included 
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, I
+NCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS 
+OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
+IN THE SOFTWARE.
+*/" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/_Software_License_Agreement/Software_License_Agreement" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
+</WINDOW>
+<SCRIPT name="onLoad()" script="configureLayout();
+init();
+_refresh();" trigger_script="" trigger_type="5" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/onLoad" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+<SCRIPT name="onRect()" script="configureLayout();
+_refresh();" trigger_script="getobjectrect(getparent(_))" trigger_type="0" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/onRect" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+<SCRIPT name="_print(value)" script="Buffer.writeLine(Helpers.valueToText(value));" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/_print" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
+<SCRIPT name="_clear()" script="Buffer.clear();" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/_clear" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
+<SCRIPT name="_refresh()" script="configureLayout();
+UI.refresh();" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/_refresh" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
+<SCRIPT name="configureLayout()" script="decl this = getobject();
 
 decl bounds = replace(getobjectrect(getparent(this)), {0, 0}, 0) - {0, 0, 16, 16};
 
@@ -460,29 +448,94 @@ setobjectrect(this, {
 
 setobjectrect(UI, getobjectrect(this));
 
-UI.init();
+decl spacing = 2;
+
+setobjectrect(UI.Screen, {
+	bounds[0], 
+	bounds[1], 
+	bounds[2] - scrollBarSize - spacing,
+	bounds[3] - scrollBarSize - spacing
+});
+
+setobjectrect(UI.VerticalScrollBar, {
+	bounds[2] - scrollBarSize, 
+	bounds[1],
+	scrollBarSize,
+	bounds[3] - scrollBarSize - spacing
+});
+
+setobjectrect(UI.HorizontalScrollBar, {
+	bounds[0],
+	bounds[3] - scrollBarSize,
+	bounds[2] - scrollBarSize - spacing,
+	scrollBarSize
+});
 
 
-" trigger_script="" trigger_type="5" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/onLoad" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
-<SCRIPT name="print(value)" script="Buffer.writeLine(Helpers.valueToText(value));
-
-
-
-
-" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/print" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
-<SCRIPT name="clear()" script="Buffer.clear();" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/clear" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
-<SCRIPT name="onRect()" script="onLoad();" trigger_script="getobjectrect(getparent(_))" trigger_type="0" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/onRect" midi_message="0x90,0x90,0,0" midi_target="-1" flag="1"/>
+setobjectrect(UI.ScrollBarCorner, {
+	bounds[2] - scrollBarSize,
+	bounds[3] - scrollBarSize,
+	scrollBarSize,
+	scrollBarSize
+});" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/_/configureLayout" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
 </WINDOW>
-<FUNCTION name="textColor()=1" send="1"/>
-<FUNCTION name="scrollIndicatorColor()=0.2" send="1"/>
-<FUNCTION name="scrollBarSize()=22" send="1"/>
-<FUNCTION name="fontSize()=12" send="1"/>
-<FUNCTION name="backgroundColor()=0.1" send="1"/>
-<FUNCTION name="scrollBarBackgroundColor()=0.07" send="1"/>
-<FUNCTION name="maxLineWidth()=3000" send="1"/>
-<FUNCTION name="padding()=3" send="1"/>
-<FUNCTION name="rowSpacing()=2" send="1"/>
-<SCRIPT name="print(value)" script="_.print(value);" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/print" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
-<SCRIPT name="clear()" script="_.clear();" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/clear" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
+<VARIABLE name="backgroundColor=" value="0.100000" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/backgroundColor" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="225,1,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="fontSize=" value="12" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/fontSize" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="maxLineWidth=" value="3000" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/maxLineWidth" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="padding=" value="3" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/padding" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="rowSpacing=" value="2" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/rowSpacing" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="scrollBarBackgroundColor=" value="0.070000" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/scrollBarBackgroundColor" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="scrollBarSize=" value="22" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/scrollBarSize" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="scrollIndicatorColor=" value="0.200000" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/scrollIndicatorColor" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<VARIABLE name="textColor=" value="1" send="0" osc_target="0" osc_trigger="1" osc_message="/MKConsole/textColor" midi_target="-1" midi_trigger="1" midi_message="0x90,0x90,0,0" midi_scale="0,16383" kbmouse_target="-1" kbmouse_trigger="1" kbmouse_message="0,0,0" kbmouse_scale="0,1,0,1"/>
+<SCRIPT name="print(value)" script="/**
+ * Prints a value to the console
+ *
+ * @param (*) value - The value to be printed.
+ *
+ * You can pass any value into this method (e.g. arrays, floats, objects) and the console will 
+ * will attempt to automatically format it into a human-readable string. 
+ *
+ */
+
+
+_._print(value); // DO NOT DELETE THIS LINE" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/print" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
+<SCRIPT name="clear()" script="/**
+ * Clears the console of text.
+ */
+
+_._clear(); // DO NOT DELETE THIS LINE" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/clear" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
+<SCRIPT name="init()" script="/**
+ * Initializes the console. Use this code to configure the initial settings.
+ */
+
+
+backgroundColor = 0.1;
+fontSize = 12;
+maxLineWidth = 3000;
+padding = 3;
+rowSpacing = 2;
+scrollBarBackgroundColor = 0.07;
+scrollBarSize = 22;
+scrollIndicatorColor = 0.2;
+textColor = 1;" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/init" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
+<SCRIPT name="refresh()" script="/**
+ * Informs the console that it needs to be redrawn.
+ *
+ * Call this whenever you change one of the style settings, such as the text color.
+ *
+ * Try not to call this script too frequently as it will impact performance. Rather, perform
+ * all your configuration first, and then call refresh only once to batch all the changes together.
+ *
+ * Example usage: 
+ * 
+ * MKConsole.textColor = {1, 1, 0, 0}; // red
+ * MKConsole.backgroundColor = {1, 0, 1, 0}; // green
+ * MKConsole.refresh();
+ *
+ */
+
+
+_._refresh(); // DO NOT DELETE THIS LINE" trigger_script="" trigger_type="4" trigger="1" clock="0" clock_div="4" osc_message="/MKConsole/refresh" midi_message="0x90,0x90,0,0" midi_target="-1" flag="0"/>
 </WINDOW>
 </JZML>
